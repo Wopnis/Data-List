@@ -1,0 +1,32 @@
+
+<div >
+  <label> Имя
+    <input type="text"
+           class="form-control"
+           placeholder="введите имя"
+    [(ngModel)]="name">
+  </label>
+  <label> Фамилия
+    <input type="text"
+           class="form-control"
+           placeholder="введите фамилию"
+    [(ngModel)]="surname">
+  </label>
+  <label> Адрес
+    <input type="text"
+           class="form-control"
+           placeholder="введите адрес"
+    [(ngModel)]="city">
+  </label>
+  <label> Идентификационный номер
+    <input type="text"
+           class="form-control"
+           placeholder="введите ID"
+    [(ngModel)]="id">
+  </label>
+
+  <button class="btn" (click)="addNewUser()">Добавить пользователя</button>
+
+
+
+</div>
