@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 
 export interface Users {
   name: string;
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     console.log('remove id', id);
     this.users = this.users.filter(elem => elem.id !== id);
   }
-  ngOnInit(){
+  ngOnInit() {
     this.http.get<Users[]>('http://localhost:8000/users')
       .subscribe(users => {
         console.log('response', users);

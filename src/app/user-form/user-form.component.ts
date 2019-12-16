@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Users} from '../app.component';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-user-form',
@@ -8,28 +9,35 @@ import {Users} from '../app.component';
 })
 export class UserFormComponent implements OnInit {
   @Output() thenAdd: EventEmitter<Users> = new EventEmitter<Users>();
-  name = '';
-  surname = '';
-  city = '';
-  id = undefined;
+  name: string;
+  surname: string;
+  city: string;
+  id: number;
 
-  constructor() { }
 
+  private initialUser: Users = {
+    name: '',
+    surname: '',
+    city: '',
+    id: null
+  };
+
+  user: Users = this.initialUser;
+
+
+  constructor(private http: HttpClient) {}
   ngOnInit() {
   }
 
   addNewUser() {
-      if (this.name.trim() && this.surname.trim() && this.city.trim()) {
-        const user: Users = {
-            name: this.name,
-            surname: this.surname,
-            city: this.city,
-            id: this.id
-        };
-        this.thenAdd.emit(user);
-        console.log('New user', user);
-        this.name = this.surname = this.city = '';
-        this.id = undefined;
+      if (this.user.name.trim() && this.user.surname.trim() && this.user.city.trim()) {
+        this.thenAdd.emit(this.user);
+        console.log('New user', this.user);
+        this.http.post('http://localhost:8000/users', this.user)
+          .subscribe(user => {
+            console.log('user', user);
+            this.user = this.initialUser;
+          });
       }
   }
 

@@ -4,25 +4,25 @@
     <input type="text"
            class="form-control"
            placeholder="введите имя"
-    [(ngModel)]="name">
+    [(ngModel)]="user.name">
   </label>
   <label> Фамилия
     <input type="text"
            class="form-control"
            placeholder="введите фамилию"
-    [(ngModel)]="surname">
+    [(ngModel)]="user.surname">
   </label>
   <label> Адрес
     <input type="text"
            class="form-control"
            placeholder="введите адрес"
-    [(ngModel)]="city">
+    [(ngModel)]="user.city">
   </label>
   <label> Идентификационный номер
     <input type="text"
            class="form-control"
            placeholder="введите ID"
-    [(ngModel)]="id">
+    [(ngModel)]="user.id">
   </label>
 
   <button class="btn" (click)="addNewUser()">Добавить пользователя</button>
